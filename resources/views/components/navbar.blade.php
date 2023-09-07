@@ -8,17 +8,11 @@
     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
         <div class="navbar-nav mr-auto py-0">
             <a href="/" class="nav-item nav-link active">Home</a>
-            <a href="/about" class="nav-item nav-link">About</a>
-            <a href="/service" class="nav-item nav-link">Service</a>
-            <a href="/project" class="nav-item nav-link">Project</a>
-            <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                <div class="dropdown-menu rounded-0 m-0">
-                    <a href="/blog" class="dropdown-item">Latest Blog</a>
-                    <a href="/single" class="dropdown-item">Blog Detail</a>
-                </div>
-            </div>
-            <a href="/contact" class="nav-item nav-link">Contact</a>
+            <a href="{{ route("about")}}" class="nav-item nav-link">About</a>
+            <a href="{{ route("service")}}" class="nav-item nav-link">Service</a>
+            <a href="{{ route("project")}}" class="nav-item nav-link">Project</a>
+            <a href="{{ route("post.index")}}" class="nav-item nav-link">Blog</a>
+            <a href="{{ route("contact")}}" class="nav-item nav-link">Contact</a>
         </div>
         <a href="" class="btn btn-primary mr-3 d-none d-lg-block">Get A Quote</a>
     </div>
