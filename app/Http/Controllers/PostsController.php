@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -11,7 +12,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view("posts.index");
+        $posts = Post::all();
+        return view("posts.index")->with("posts", $posts);
     }
 
     /**
@@ -33,9 +35,12 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Post $post)
     {
-        //
+        return view("posts.show")->with([
+            "post" => $post,
+            "recent_posts" => Post::latest()->get()->except($post->id)->take(5),
+        ]);
     }
 
     /**
