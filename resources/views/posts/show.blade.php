@@ -12,6 +12,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
+                    <div class="text-right d-flex justify-content-end">
+                        <a class="btn btn-sm btn-outline-secondary mx-3" href="{{ route("post.edit", ["post"=> $post->id]) }}">Edit</a>
+                        <form action="{{ route("post.destroy", ["post"=> $post->id]) }}" method="POST"
+                            onsubmit="return confirm('Are you sure you want to delete this post?');">
+                            @csrf
+                            @method("DELETE")
+                            <button type="submit" class="btn btn-sm btn-outline-danger" >Remove</button>
+                        </form>
+                    </div>
                     <div class="mb-5">
                         <div class="d-flex mb-2">
                             <a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a>
@@ -24,7 +33,7 @@
                     </div>
 
                     <div class="mb-5">
-                        <img class="img-fluid rounded w-100 mb-4" src="/img/carousel-1.jpg" alt="Image">
+                        <img class="img-fluid rounded w-100 mb-4" src="{{ asset("storage/".$post->photo)}}" alt="Image">
                         <p>Sadipscing labore amet rebum est et justo gubergren. Et eirmod ipsum sit diam ut magna lorem.
                             Nonumy vero labore lorem sanctus rebum et lorem magna kasd, stet amet magna accusam
                             consetetur

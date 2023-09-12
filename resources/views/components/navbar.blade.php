@@ -14,6 +14,6 @@
             <a href="{{ route("post.index")}}" class="nav-item nav-link">Blog</a>
             <a href="{{ route("contact")}}" class="nav-item nav-link">Contact</a>
         </div>
-        <a href="" class="btn btn-primary mr-3 d-none d-lg-block">Get A Quote</a>
+        <a href="{{ route("post.create") }}" class="btn btn-primary mr-3 d-none d-lg-block">Get A Quote</a>
     </div>
 </nav>
