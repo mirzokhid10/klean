@@ -13,20 +13,6 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        Post::create([
-            "user_id" => 1,
-            "title" => "sarlavha",
-            "short_content" => "dsadsajdbsajkdbsjka",
-            "content" => "sarlavha",
-            "photo" => null,
-        ]);
-
-        Post::create([
-            "user_id" => 1,
-            "title" => "sarlavha",
-            "short_content" => "dsadsajdbsajkdbsjka",
-            "content" => "sarlavha",
-            "photo" => null,
-        ]);
+        Post::factory()->count(20)->create();
     }
 }

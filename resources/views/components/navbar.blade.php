@@ -14,6 +14,15 @@
             <a href="{{ route("post.index")}}" class="nav-item nav-link">Blog</a>
             <a href="{{ route("contact")}}" class="nav-item nav-link">Contact</a>
         </div>
-        <a href="{{ route("post.create") }}" class="btn btn-primary mr-3 d-none d-lg-block">Get A Quote</a>
+        @auth
+
+            <a href="{{ route("post.create") }}" class="btn btn-primary mr-3 d-none d-lg-block">Get A Quote</a>
+            <form action="{{route("logout")}}" method="POST">
+                @csrf
+                <button class="btn mr-3 d-none d-lg-block" style="background-color: #0A1026; color:white">Log out</button>
+            </form>
+            @else
+            <a href="{{ route("login") }}" class="btn btn-primary mr-3 d-none d-lg-block">Login</a>
+        @endauth
     </div>
 </nav>

@@ -19,6 +19,20 @@
                         @enderror
                     </div>
                     <div class="col-sm-12 my-3 control-group">
+                        <label>Categories: </label><br>
+                        @foreach ($categories as $category)
+                            <input type="radio" class="btn-check" name="category_id" id="category-{{ $category->id }}" value="{{ $category->id }}" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="category-{{ $category->id }}">{{ $category->name }}</label>
+                        @endforeach
+                    </div>
+                    <div class="col-sm-12 my-3 control-group">
+                        <label>Tags: </label><br>
+                        @foreach ($tags as $tag)
+                            <input type="checkbox" class="btn-check" name="tags[]" id="tag-{{ $tag->id }}" value="{{ $tag->id }}" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
+                        @endforeach
+                    </div>
+                    <div class="col-sm-12 my-3 control-group">
                         <input type="file" class="form-control p-4" name="photo" placeholder="rasm" />
                         @error("photo")
                             <p class="help-block text-danger">{{ $message}}</p>

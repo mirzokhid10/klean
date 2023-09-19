@@ -10129,3 +10129,27 @@ h6,
   padding: 0;
   list-style-type: none;
 }
+
+
+/* new */
+
+.btn-check:checked + .btn-outline-primary {
+    background-color: #ffc600; /* Change the background color when checked */
+    color: #000;
+}
+
+.btn-check {
+    display: none; /* Hide the actual checkbox */
+}
+
+.btn-outline-primary {
+    padding: 0.5rem 1rem; /* Increase padding to make it larger */
+    border-radius: 20px; /* Apply border-radius for pill shape */
+}
+
+.login {
+    background-image: url("/img/carousel-2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
