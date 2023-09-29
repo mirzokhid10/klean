@@ -13,24 +13,26 @@
             <div class="row">
                 <div class="col-lg-8">
                     @auth
-                        <div class="text-right d-flex justify-content-between">
-                            <div class="d-flex mb-2">
-                                @foreach ($post->tags as $tag)
-                                <a class="text-secondary text-uppercase font-weight-medium" href="">{{ $tag->name }}</a>
-                                <span class="text-primary px-2">|</span>
-                                @endforeach
-                                <a class="text-secondary text-uppercase font-weight-medium" href="">{{ $post->created_at }}</a>
+                        @canany(["update", "delete"], $post)
+                            <div class="text-right d-flex justify-content-between">
+                                <div class="d-flex mb-2">
+                                    @foreach ($post->tags as $tag)
+                                    <a class="text-secondary text-uppercase font-weight-medium" href="">{{ $tag->name }}</a>
+                                    <span class="text-primary px-2">|</span>
+                                    @endforeach
+                                    <a class="text-secondary text-uppercase font-weight-medium" href="">{{ $post->created_at }}</a>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <a class="btn btn-sm btn-outline-secondary mx-3" href="{{ route("post.edit", ["post"=> $post->id]) }}">Edit</a>
+                                    <form action="{{ route("post.destroy", ["post"=> $post->id]) }}" method="POST"
+                                        onsubmit="return confirm('Are you sure you want to delete this post?');">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button type="submit" class="btn btn-sm btn-outline-danger" >Remove</button>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="d-flex justify-content-end">
-                                <a class="btn btn-sm btn-outline-secondary mx-3" href="{{ route("post.edit", ["post"=> $post->id]) }}">Edit</a>
-                                <form action="{{ route("post.destroy", ["post"=> $post->id]) }}" method="POST"
-                                    onsubmit="return confirm('Are you sure you want to delete this post?');">
-                                    @csrf
-                                    @method("DELETE")
-                                    <button type="submit" class="btn btn-sm btn-outline-danger" >Remove</button>
-                                </form>
-                            </div>
-                        </div>
+                        @endcanany
                     @endauth
                     <div class="mb-5">
                         <h1 class="section-title mb-3">{{$post->title}}</h1>
